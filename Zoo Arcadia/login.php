@@ -51,37 +51,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Arcadia Zoo</title>
+    <title>Login - Zoo Arcadia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <header class="bg-success py-3">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.php">Arcadia Zoo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="habitats.php">Habitats</a></li>
-                        <li class="nav-item"><a class="nav-link" href="reviews.php">Reviews</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+
+    <?php include "header.php"; ?>
     
     <main class="flex-shrink-0">
-        <h1 class="mb-4">Login to Arcadia Zoo</h1>
+        <h1 class="mb-4">Connectez vous au Zoo Arcadia</h1>
         
         <?php if ($error): ?>
             <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -89,14 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <form action="login.php" method="post" class="login-form">
             <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
+                <label for="username" class="form-label">Nom D'utilisateur:</label>
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Mot de passe:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
     </main>
 

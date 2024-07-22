@@ -116,12 +116,12 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrator Dashboard - Arcadia Zoo</title>
+    <title>Tableau de bord administrateur - Zoo Arcadia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -137,22 +137,22 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#create-user">
-                                Create User
+                                Créer un utilisateur
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#manage-services">
-                                Manage Services
+                                Gérer les services
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#manage-hours">
-                                Manage Zoo Hours
+                                Gérer les horaires du zoo
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#manage-habitats">
-                                Manage Habitats
+                                Gérer les habitats
                             </a>
                         </li>
                     </ul>
@@ -161,7 +161,7 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Administrator Dashboard</h1>
+                    <h1 class="h2">Tableau de bord administrateur</h1>
                 </div>
 
                 <?php
@@ -175,25 +175,25 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
 
                 <!-- User Creation Form -->
                 <section id="create-user">
-                    <h2 class="mt-4">Create New User</h2>
+                    <h2 class="mt-4">Crée nouvelle utilisateur</h2>
                     <form method="post" class="mb-4">
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">Nom d'utilisateur</label>
                             <input type="text" name="username" id="username" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">Mot de passe</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="lastname" class="form-label">Last Name</label>
+                            <label for="lastname" class="form-label">Nom de famille</label>
                             <input type="text" name="lastname" id="lastname" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="role" class="form-label">Role</label>
+                            <label for="role" class="form-label">Rôle</label>
                             <select name="role" id="role" class="form-select" required>
-                                <option value="2">Employee</option>
-                                <option value="3">Veterinarian</option>
+                                <option value="2">Employé</option>
+                                <option value="3">Vétérinaire</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -206,79 +206,79 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
 
                 <!-- Service Management Form -->
                 <section id="manage-services">
-                    <h2 class="mt-4">Manage Services</h2>
+                    <h2 class="mt-4">Gérer les services</h2>
                     <form method="post" class="mb-4">
                         <div class="mb-3">
                             <label for="service_action" class="form-label">Action</label>
                             <select name="action" id="service_action" class="form-select" required>
-                                <option value="create">Create</option>
-                                <option value="update">Update</option>
-                                <option value="delete">Delete</option>
+                                <option value="create">Créer</option>
+                                <option value="update">Mettre à jour</option>
+                                <option value="delete">Supprimer</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="service_id" class="form-label">Service (for update/delete)</label>
+                            <label for="service_id" class="form-label">Service (pour mise à jour/suppression)</label>
                             <select name="service_id" id="service_id" class="form-select">
-                                <option value="">Select a service</option>
+                                <option value="">Sélectionner un service</option>
                                 <?php foreach ($services as $service) : ?>
                                     <option value="<?php echo $service['id']; ?>"><?php echo htmlspecialchars($service['nom']); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="nom" class="form-label">Service Name</label>
+                            <label for="nom" class="form-label">Nom du service</label>
                             <input type="text" name="nom" id="nom" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea name="description" id="description" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" name="manage_service" class="btn btn-primary">Manage Service</button>
+                        <button type="submit" name="manage_service" class="btn btn-primary">Confirmer</button>
                     </form>
                 </section>
 
                 <!-- Zoo Hours Management Form -->
                 <section id="manage-hours">
-                    <h2 class="mt-4">Manage Zoo Hours</h2>
+                    <h2 class="mt-4">Gérer les heures d'ouverture</h2>
                     <form method="post" class="mb-4">
                         <div class="mb-3">
-                            <label for="day" class="form-label">Day</label>
+                            <label for="day" class="form-label">Jour</label>
                             <select name="day" id="day" class="form-select" required>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
-                                <option value="Sunday">Sunday</option>
+                                <option value="Monday">Lundi</option>
+                                <option value="Tuesday">Mardi</option>
+                                <option value="Wednesday">Mercredi</option>
+                                <option value="Thursday">Jeudi</option>
+                                <option value="Friday">Vendredi</option>
+                                <option value="Saturday">Samedi</option>
+                                <option value="Sunday">Dimanche</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="open_time" class="form-label">Opening Time</label>
+                            <label for="open_time" class="form-label">Heure d'ouverture</label>
                             <input type="time" name="open_time" id="open_time" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="close_time" class="form-label">Closing Time</label>
+                            <label for="close_time" class="form-label">Heure de fermeture</label>
                             <input type="time" name="close_time" id="close_time" class="form-control" required>
                         </div>
-                        <button type="submit" name="manage_hours" class="btn btn-primary">Update Hours</button>
+                        <button type="submit" name="manage_hours" class="btn btn-primary">Mettre à jour les horaires</button>
                     </form>
                 </section>
 
                 <!-- Habitat Management Form -->
                 <section id="manage-habitats">
-                    <h2 class="mt-4">Manage Habitats</h2>
+                    <h2 class="mt-4">Gérer les habitats</h2>
                     <form method="post" class="mb-4">
                         <div class="mb-3">
                             <label for="habitat_action" class="form-label">Action</label>
                             <select name="action" id="habitat_action" class="form-select" required>
-                                <option value="create">Create</option>
-                                <option value="update">Update</option>
-                                <option value="delete">Delete</option>
+                                <option value="create">Créer</option>
+                                <option value="update">Mettre à jour</option>
+                                <option value="delete">Supprimer</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="habitat_id" class="form-label">Habitat (for update/delete)</label>
+                            <label for="habitat_id" class="form-label">Habitat (pour mise à jour/suppression)</label>
                             <select name="habitat_id" id="habitat_id" class="form-select">
                                 <option value="">Select a habitat</option>
                                 <?php foreach ($habitats as $habitat) : ?>
@@ -287,14 +287,14 @@ $habitats = $pdo->query("SELECT * FROM habitats")->fetchAll(PDO::FETCH_ASSOC);
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Habitat Name</label>
+                            <label for="name" class="form-label">Nom de l'habitat</label>
                             <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea name="description" id="description" class="form-control" required></textarea>
                         </div>
-                        <button type="submit" name="manage_habitat" class="btn btn-primary">Manage Habitat</button>
+                        <button type="submit" name="manage_habitat" class="btn btn-primary">Confirmer</button>
                     </form>
                 </section>
         </div>

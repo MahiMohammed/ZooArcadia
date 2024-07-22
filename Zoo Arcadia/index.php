@@ -17,12 +17,12 @@ try {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia Zoo - Welcome to Nature's Paradise</title>
+    <title>Arcadia Zoo - Bienvenue</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -32,20 +32,20 @@ try {
     <?php include "header.php"; ?>
 
     <main class="flex-shrink-0">
-        <h1 class="mb-4">Welcome to Arcadia Zoo</h1>
-        <p>Discover the wonders of nature at Arcadia Zoo, where conservation meets education. Our eco-friendly haven is home to a diverse array of species from around the globe, living in carefully crafted habitats that mimic their natural environments.</p>
-        <p>At Arcadia, we're committed to preserving biodiversity and inspiring the next generation of environmental stewards. Through interactive exhibits, educational programs, and hands-on experiences, we invite you to connect with wildlife and learn about the importance of ecological balance.</p>
+        <h1 class="mb-4">Bienvenue au Zoo Arcadia</h1>
+        <p>Découvrez les merveilles de la nature au zoo d'Arcadia, où la conservation rencontre l'éducation. Notre refuge écologique abrite un large éventail d'espèces du monde entier, vivant dans des habitats soigneusement conçus qui imitent leur environnement naturel..</p>
+        <p>Chez Arcadia, nous nous engageons à préserver la biodiversité et à inspirer la prochaine génération de protecteur de l'environnement. Grâce à des expositions interactives, des programmes éducatifs et des expériences pratiques, nous vous invitons à vous connecter avec la faune et à découvrir l'importance de l'équilibre écologique.</p>
 
-        <h2 class="mt-5 mb-3">Zoo Hours</h2>
+        <h2 class="mt-5 mb-3">Heures d'ouverture</h2>
         <?php if (isset($error_message)) : ?>
             <div class="alert alert-danger"><?php echo $error_message; ?></div>
         <?php else : ?>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Day</th>
-                        <th>Opening Time</th>
-                        <th>Closing Time</th>
+                        <th>Jour</th>
+                        <th>Heure d'ouverture</th>
+                        <th>Heure de Fermeture</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,24 +66,22 @@ try {
         }
         ?>
 
-        <h2 class="mt-5 mb-3">Submit a Review</h2>
+        <h2 class="mt-5 mb-3">Donner un avis</h2>
         <form action="submit_review.php" method="post" class="mb-5">
             <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             <div class="mb-3">
-                <label for="name" class="form-label">Your Name:</label>
+                <label for="name" class="form-label">Votre Nom:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
-                <label for="review" class="form-label">Your Review:</label>
+                <label for="review" class="form-label">Votre Avis:</label>
                 <textarea class="form-control" id="review" name="review" rows="3" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit Review</button>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
     </main>
 
-    <?php
-    include "footer.html";
-    ?>
+    <?php include "footer.html"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

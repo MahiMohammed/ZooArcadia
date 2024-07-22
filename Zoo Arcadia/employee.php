@@ -121,11 +121,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Dashboard - Arcadia Zoo</title>
+    <title>Tableau de bord de l'employé - Zoo Arcadia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -134,13 +134,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
     <?php include "header.php"; ?>
 
     <main class="container my-4">
-        <h1 class="mb-4">Employee Dashboard</h1>
+        <h1 class="mb-4">Tableau de bord de l'employé</h1>
 
-        <h2 class="mt-4">Manage Reviews</h2>
+        <h2 class="mt-4">Gérer les avis</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Author</th>
+                    <th>Auteur</th>
                     <th>Message</th>
                     <th>Visible</th>
                     <th>Actions</th>
@@ -151,16 +151,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
                     <tr>
                         <td><?php echo htmlspecialchars($review['author']); ?></td>
                         <td><?php echo htmlspecialchars($review['message']); ?></td>
-                        <td><?php echo $review['visible'] ? 'Yes' : 'No'; ?></td>
+                        <td><?php echo $review['visible'] ? 'Oui' : 'Non'; ?></td>
                         <td>
                             <form method="post" class="d-inline">
                                 <input type="hidden" name="review_id" value="<?php echo $review['id']; ?>">
                                 <input type="hidden" name="visible" value="<?php echo $review['visible']; ?>">
-                                <button type="submit" name="toggle_visibility" class="btn btn-sm btn-primary">Toggle Visibility</button>
+                                <button type="submit" name="toggle_visibility" class="btn btn-sm btn-primary">Changer la visibilité</button>
                             </form>
                             <form method="post" class="d-inline">
                                 <input type="hidden" name="review_id" value="<?php echo $review['id']; ?>">
-                                <button type="submit" name="delete_review" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this review?')">Delete</button>
+                                <button type="submit" name="delete_review" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')">Supprimer</button>
                             </form>
                         </td>
                     </tr>
@@ -168,13 +168,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
             </tbody>
         </table>
 
-        <h2 class="mt-4">Manage Services</h2>
+        <h2 class="mt-4">Gérer les services</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Nom</th>
                     <th>Description</th>
-                    <th>Image URL</th>
+                    <th>URL de l'image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -187,8 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
                             <td><textarea name="description" class="form-control"><?php echo htmlspecialchars($service['description']); ?></textarea></td>
                             <td><input type="text" name="image_url" value="<?php echo htmlspecialchars($service['image_url']); ?>" class="form-control"></td>
                             <td>
-                                <button type="submit" name="modify_service" class="btn btn-sm btn-primary">Modify</button>
-                                <button type="submit" name="delete_service" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this service?')">Delete</button>
+                                <button type="submit" name="modify_service" class="btn btn-sm btn-primary">Modifier</button>
+                                <button type="submit" name="delete_service" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce service ?')">Supprimer</button>
                             </td>
                         </form>
                     </tr>
@@ -196,10 +196,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
             </tbody>
         </table>
 
-        <h3 class="mt-4">Add New Service</h3>
+        <h3 class="mt-4">Ajouter un nouveau service</h3>
         <form method="post">
             <div class="mb-3">
-                <label for="new_name" class="form-label">Name</label>
+                <label for="new_name" class="form-label">Nom</label>
                 <input type="text" name="new_name" id="new_name" class="form-control" required>
             </div>
             <div class="mb-3">
@@ -207,13 +207,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
                 <textarea name="new_description" id="new_description" class="form-control" required></textarea>
             </div>
             <div class="mb-3">
-                <label for="new_image_url" class="form-label">Image URL</label>
+                <label for="new_image_url" class="form-label">URL de l'image</label>
                 <input type="text" name="new_image_url" id="new_image_url" class="form-control" required>
             </div>
-            <button type="submit" name="add_service" class="btn btn-success">Add Service</button>
+            <button type="submit" name="add_service" class="btn btn-success">Ajouter le service</button>
         </form>
 
-        <h2 class="mt-4">Submit Nutrition Report</h2>
+        <h2 class="mt-4">Soumettre un rapport de nutrition</h2>
         <?php
         if (isset($success_message)) {
             echo "<div class='alert alert-success'>$success_message</div>";
@@ -226,25 +226,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_nutrition_repor
             <div class="mb-3">
                 <label for="animal_id" class="form-label">Animal</label>
                 <select name="animal_id" id="animal_id" class="form-select" required>
-                    <option value="">Select an animal</option>
+                    <option value="">Sélectionner un animal</option>
                     <?php foreach ($animals as $animal): ?>
                         <option value="<?php echo $animal['id']; ?>"><?php echo htmlspecialchars($animal['name']); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
-                <label for="date_time" class="form-label">Date and Time</label>
+                <label for="date_time" class="form-label">Date et heure</label>
                 <input type="datetime-local" name="date_time" id="date_time" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="food_type" class="form-label">Food Type</label>
+                <label for="food_type" class="form-label">Type de nourriture</label>
                 <input type="text" name="food_type" id="food_type" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="food_quantity" class="form-label">Food Quantity (in grams)</label>
+                <label for="food_quantity" class="form-label">Quantité de nourriture (en grammes)</label>
                 <input type="number" name="food_quantity" id="food_quantity" class="form-control" required>
             </div>
-            <button type="submit" name="submit_nutrition_report" class="btn btn-primary">Submit Report</button>
+            <button type="submit" name="submit_nutrition_report" class="btn btn-primary">Soumettre le rapport</button>
         </form>
     </main>
 

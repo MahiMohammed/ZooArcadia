@@ -5,27 +5,27 @@ require "php/constants.php";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $hostname, $hostpassword);
-    // Set the PDO error mode to exception
+    // Définir le mode d'erreur PDO sur exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
+    die("Échec de la connexion : " . $e->getMessage());
 }
 
-// Fetch habitats from the database
+// Récupérer les habitats depuis la base de données
 try {
     $stmt = $pdo->query("SELECT id, name, image_url FROM habitats");
     $habitats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
-    die("Error fetching habitats: " . $e->getMessage());
+    die("Erreur lors de la récupération des habitats : " . $e->getMessage());
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoo Habitats - Arcadia Zoo</title>
+    <title>Habitats du Zoo - Zoo Arcadia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -35,7 +35,7 @@ try {
     <?php include "header.php"; ?>
 
     <main class="flex-shrink-0">
-        <h1 class="mb-4">Our Habitats</h1>
+        <h1 class="mb-4">Nos Habitats</h1>
         
         <div id="habitatsCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -44,18 +44,18 @@ try {
                         <img src="<?php echo htmlspecialchars($habitat['image_url']); ?>" class="d-block w-100" alt="<?php echo htmlspecialchars($habitat['name']); ?>">
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?php echo htmlspecialchars($habitat['name']); ?></h5>
-                            <a href="habitat_detail.php?id=<?php echo $habitat['id']; ?>" class="btn btn-primary">Learn More</a>
+                            <a href="habitat_detail.php?id=<?php echo $habitat['id']; ?>" class="btn btn-primary">En savoir plus</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#habitatsCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Précédent</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#habitatsCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Suivant</span>
             </button>
         </div>
 
@@ -66,7 +66,7 @@ try {
                         <img src="<?php echo htmlspecialchars($habitat['image_url']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($habitat['name']); ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($habitat['name']); ?></h5>
-                            <a href="habitat_detail.php?id=<?php echo $habitat['id']; ?>" class="btn btn-primary">Learn More</a>
+                            <a href="habitat_detail.php?id=<?php echo $habitat['id']; ?>" class="btn btn-primary">En savoir plus</a>
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,7 @@ try {
         </div>
     </main>
 
-    <?php
-    include "footer.html";
-    ?>
+    <?php include "footer.html"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
