@@ -1,0 +1,194 @@
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout */
+main {
+    flex: 1 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+/* Typography */
+h1, h2 {
+    color: #2e7d32;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #4caf50;
+    padding: 1em;
+    position: relative;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #45a049;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #3d8b3d;
+}
+
+.navbar .btn {
+    padding: .375rem .75rem;
+}
+
+/* Forms */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 150px;
+}
+
+/* Login Form */
+.login-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Contact Form */
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Reviews */
+.review {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* Carousel Styles */
+.carousel-item img {
+    object-fit: cover;
+    height: 400px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0,0,0,0.5);
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    height: 100%;
+    width: 100%;
+}
+
+/* Card Styles */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Modal Styles */
+.modal-body {
+    background-size: cover;
+    background-position: center;
+}
+
+.modal-body .row {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+
+.modal-body img {
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* Sidebar */
+.sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar .nav-link {
+    color: #495057;
+}
+
+.sidebar .nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Utility Classes */
+.success {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.error {
+    color: #f44336;
+    font-weight: bold;
+}
