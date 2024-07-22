@@ -3,6 +3,10 @@
 
 require "php/constants.php";
 
+if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    die('CSRF token validation failed');
+}
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $hostname, $hostpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

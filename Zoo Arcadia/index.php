@@ -8,7 +8,8 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Fetch zoo hours
-    $stmt = $pdo->query("SELECT * FROM zoo_hours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')");
+    $stmt = $pdo->prepare("SELECT * FROM zoo_hours ORDER BY FIELD(day, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')");
+    $stmt->execute();
     $zoo_hours = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $error_message = "Database Error: " . $e->getMessage();
@@ -59,8 +60,15 @@ try {
             </table>
         <?php endif; ?>
 
+        <?php
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        ?>
+
         <h2 class="mt-5 mb-3">Submit a Review</h2>
         <form action="submit_review.php" method="post" class="mb-5">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Your Name:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
